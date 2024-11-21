@@ -1,0 +1,91 @@
+dbmdz/bert-base-german-cased
+
+**************************************************Cross-validation number 1**************************************************
+
+              precision    recall  f1-score   support
+
+   ASSERTIVE     0.7125    0.8321    0.7677       137
+  COMMISSIVE     0.5000    0.5000    0.5000         4
+   DIRECTIVE     0.9280    0.9134    0.9206       127
+  EXPRESSIVE     0.6866    0.5750    0.6259        80
+       OTHER     0.7857    0.7857    0.7857        14
+      UNSURE     0.2273    0.1667    0.1923        30
+
+    accuracy                         0.7500       392
+   macro avg     0.6400    0.6288    0.6320       392
+weighted avg     0.7403    0.7500    0.7422       392
+
+**************************************************Cross-validation number 2**************************************************
+
+              precision    recall  f1-score   support
+
+   ASSERTIVE     0.7125    0.8321    0.7677       137
+  COMMISSIVE     0.7500    0.7500    0.7500         4
+   DIRECTIVE     0.9339    0.8898    0.9113       127
+  EXPRESSIVE     0.6949    0.5125    0.5899        80
+       OTHER     0.7778    1.0000    0.8750        14
+      UNSURE     0.3333    0.3333    0.3333        30
+
+    accuracy                         0.7526       392
+   macro avg     0.7004    0.7196    0.7045       392
+weighted avg     0.7543    0.7526    0.7483       392
+
+**************************************************Cross-validation number 3**************************************************
+
+              precision    recall  f1-score   support
+
+   ASSERTIVE     0.7500    0.8540    0.7986       137
+  COMMISSIVE     0.4000    0.5000    0.4444         4
+   DIRECTIVE     0.9667    0.9134    0.9393       127
+  EXPRESSIVE     0.6757    0.6250    0.6494        80
+       OTHER     0.8333    0.7143    0.7692        14
+      UNSURE     0.1600    0.1333    0.1455        30
+
+    accuracy                         0.7628       392
+   macro avg     0.6309    0.6233    0.6244       392
+weighted avg     0.7593    0.7628    0.7591       392
+
+**************************************************Cross-validation number 4**************************************************
+
+              precision    recall  f1-score   support
+
+   ASSERTIVE     0.7303    0.8102    0.7682       137
+  COMMISSIVE     1.0000    0.5000    0.6667         4
+   DIRECTIVE     0.9449    0.9449    0.9449       127
+  EXPRESSIVE     0.7105    0.6750    0.6923        80
+       OTHER     1.0000    0.8571    0.9231        14
+      UNSURE     0.3913    0.3000    0.3396        30
+
+    accuracy                         0.7857       392
+   macro avg     0.7962    0.6812    0.7225       392
+weighted avg     0.7822    0.7857    0.7816       392
+
+**************************************************Cross-validation number 5**************************************************
+
+              precision    recall  f1-score   support
+
+   ASSERTIVE     0.6964    0.8540    0.7672       137
+  COMMISSIVE     0.0000    0.0000    0.0000         4
+   DIRECTIVE     0.9569    0.8740    0.9136       127
+  EXPRESSIVE     0.6795    0.6625    0.6709        80
+       OTHER     0.9231    0.8571    0.8889        14
+      UNSURE     0.2500    0.1333    0.1739        30
+
+    accuracy                         0.7577       392
+   macro avg     0.5843    0.5635    0.5691       392
+weighted avg     0.7442    0.7577    0.7461       392
+
+************************************************Results of 5 fold cross-validation************************************************
+
+              precision     recall   f1-score    support
+
+   ASSERTIVE     0.7203     0.8365     0.7739     137.00
+  COMMISSIVE     0.5300     0.4500     0.4722       4.00
+   DIRECTIVE     0.9461     0.9071     0.9259     127.00
+  EXPRESSIVE     0.6894     0.6100     0.6457      80.00
+       OTHER     0.8640     0.8429     0.8484      14.00
+      UNSURE     0.2724     0.2133     0.2369      30.00
+
+    accuracy                           0.7617     392.00
+   macro avg     0.6704     0.6433     0.6505     392.00
+weighted avg     0.7561     0.7617     0.7555     392.00
