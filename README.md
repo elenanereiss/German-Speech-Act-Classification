@@ -79,7 +79,7 @@ German Speech Acts Dataset can be found on [GitHub](https://anonymous.4open.scie
 
 For our baselines, we selected default hyperparameters: 
 
-```json
+```
         hyperparameters = {'learning_rate': 2e-05,
                            'num_train_epochs': 10,
                            'seed': 123,
@@ -112,7 +112,8 @@ For our baselines, we selected default hyperparameters:
 ### Encoders: Hyperparameter Search
 
 We performed a hyperparameter search on the first train and validation split used a Python library [Ray Tune](https://docs.ray.io/en/latest/tune/index.html). The goal was to maximize F1-macro of baseline models during 30 trials. After finding the best hyperparameters, we trained and evaluated a model on 5-folds. Hyperparameter space was defined as follow:
-```json
+
+```
         "learning_rate": trial.suggest_float("learning_rate", 1e-5, 1e-2, log=True),
         "num_train_epochs": trial.suggest_int("num_train_epochs", 1,15),
         "seed": trial.suggest_int("seed", 1, 40),
@@ -145,7 +146,7 @@ We performed a hyperparameter search on the first train and validation split use
 
 We fine-tuned Fastfit on a full train set in each 5-fold. Regarding hyperparameters, we used the hyperparameters suggested by authors for [text classification](https://github.com/IBM/fastfit?tab=readme-ov-file#training-with-python).
 
-```json
+```
         {
             per_device_train_batch_size=16,
             per_device_eval_batch_size=16,
