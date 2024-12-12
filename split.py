@@ -7,38 +7,34 @@ import numpy as np
 from sklearn.model_selection import StratifiedShuffleSplit
 from src.config import dataset_link
 
-
+    # Split dataset with sklearn
 if __name__ == "__main__":
 
-
-    # Split dataset with sklearn
-    
-    r = requests.get(dataset_link)
-    data = json.loads(r.text)
     map_fine_labels = {"ENGAGE": "COMMISSIVE", "REFUSE": "COMMISSIVE", "THREAT": "COMMISSIVE","DISAGREE": "EXCLUDED", "APOLOGIZE": "EXCLUDED", "THANK": "EXCLUDED", "GREET": "EXCLUDED"}
 
-    # Dataframe for annotations (Title/filename, text, informativeness, topic and credibility rating for each tweet)
+    # Dataframe for annotations (Title/filename, text, coarse-grained labels, fine-grained labels, modified fine-grained labels and hate speech labels)
     df = pd.DataFrame(columns=['title', 'text', 'sa_coarse', 'sa_fine', 'sa_fine_modified', 'hate_speech'])
 
     # create data folder
     if not os.path.exists('data'):
         os.makedirs('data')
+    
+    r = requests.get(dataset_link)
+    data = json.loads(r.text)
 
-    with open('data/speech_act_dataset_v1_1.json', encoding="utf8") as f:
-        data = json.load(f)
-        titles = [k for k in data.keys()]
-        for t in titles:
-            hate_label = t.split("_")[-1].replace(".xml","")
-            sentences = data[t]["tweet"]["sentences"]
-            for sent_number in sentences.keys():
-                label_coarse = sentences[sent_number]["coarse"]
-                label_fine = sentences[sent_number]["fine"]
-                if label_fine in map_fine_labels.keys(): 
-                    sa_fine_modified = map_fine_labels[label_fine]
-                else: sa_fine_modified = label_fine
-                text = sentences[sent_number]["text"]
-                sentence = pd.Series({'title': t, 'text': text, 'sa_coarse': label_coarse, 'sa_fine': label_fine, 'sa_fine_modified': sa_fine_modified, 'hate_speech': hate_label})
-                df = pd.concat([df, sentence.to_frame().T], ignore_index=True)
+    titles = [k for k in data.keys()]
+    for t in titles:
+        hate_label = t.split("_")[-1].replace(".xml","")
+        sentences = data[t]["tweet"]["sentences"]
+        for sent_number in sentences.keys():
+            label_coarse = sentences[sent_number]["coarse"]
+            label_fine = sentences[sent_number]["fine"]
+            if label_fine in map_fine_labels.keys(): 
+                sa_fine_modified = map_fine_labels[label_fine]
+            else: sa_fine_modified = label_fine
+            text = sentences[sent_number]["text"]
+            sentence = pd.Series({'title': t, 'text': text, 'sa_coarse': label_coarse, 'sa_fine': label_fine, 'sa_fine_modified': sa_fine_modified, 'hate_speech': hate_label})
+            df = pd.concat([df, sentence.to_frame().T], ignore_index=True)
                 
     data = df.to_dict('records')
     # Serializing and writing pretty json file
